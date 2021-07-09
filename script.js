@@ -116,9 +116,9 @@ function splitIntoTeams(){
     for(let i=0;i<numberOfTeams;i++){
         teams[i]=[];
         //-- make teams
-        for(let b=0;b<limit;b++){
+        for(let b=0;b<=amountOfStudents;b++){
             let getRandomStudent = Math.floor(Math.random()*amountOfStudents) 
-            if(teams[i].indexOf(studentArray[getRandomStudent])==-1){
+            if(teams[i].indexOf(studentArray[getRandomStudent])==-1 && teams[i].length<6){
                 teams[i].push(studentArray[getRandomStudent])
                 studentArray.splice(getRandomStudent,1);
                 amountOfStudents = studentArray.length
