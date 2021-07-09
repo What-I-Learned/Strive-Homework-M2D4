@@ -104,40 +104,31 @@ function splitIntoTeams(){
     let studentArray = generateStudentArray();
     let numberOfTeams = displayandGetAmount();
     let amountOfStudents = studentArray.length
+
+    let limit= Math.round(amountOfStudents/numberOfTeams)
     
+    //-- array to hold all teams
     let teams = []
+
+    //-- check that there are more students than teams
     if(studentArray.length>numberOfTeams){
+    //-- make as many arrays as there are teams
     for(let i=0;i<numberOfTeams;i++){
         teams[i]=[];
-        for(let b=0;b<=amountOfStudents;b++){
-            let getRandomStudent = Math.floor(Math.random()*amountOfStudents)
-           if(teams[i].includes(studentArray[getRandomStudent])){
-               teams[i].splice(studentArray[getRandomStudent],1)
-            }else{
-                console.log("false");
+        //-- make teams
+        for(let b=0;b<limit;b++){
+            let getRandomStudent = Math.floor(Math.random()*amountOfStudents) 
+            if(teams[i].indexOf(studentArray[getRandomStudent])==-1){
                 teams[i].push(studentArray[getRandomStudent])
-                studentArray.splice(studentArray[getRandomStudent],1)
-                amountOfStudents--;
+                studentArray.splice(getRandomStudent,1);
+                amountOfStudents = studentArray.length
             }
-                
-                console.log(studentArray);
-
-           
-            // if(teams[i].indexOf(studentArray[getRandomStudent])==-1){
-            //     
-            // }
-                
-            //     
-            //     
-            //     console.log(studentArray.splice(studentArray[getRandomStudent],1));
-            
-                
-
-        }
+            }           
     }
     }
 
 
     console.log(teams);
+    console.log(studentArray);
 }
 
