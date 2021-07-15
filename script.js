@@ -5,10 +5,45 @@ window.onload = function () {
 const range = document.getElementById("amountOfGroups");
 range.addEventListener("input", displayandGetAmount);
 
+function animationTranslateXLeft(element) {
+  element.animate(
+    [
+      // keyframes
+      { transform: "translateY(-30px)" },
+      { transform: "translateY(0px)" },
+    ],
+    {
+      // timing options
+      duration: 200,
+      iterations: 1,
+    }
+  );
+}
+
+function animationTranslateYUp(element) {
+  element.animate(
+    [
+      // keyframes
+
+      { transform: "translateY(30px)" },
+      { transform: "translateY(0px)" },
+    ],
+    {
+      // timing options
+      duration: 200,
+      iterations: 1,
+    }
+  );
+}
+
 function displayandGetAmount() {
   let number = document.getElementById("amountOfGroups").value;
-  const numberOfTeams = document.getElementById("numberOfTeams");
+  const numberOfTeams = document.querySelector("#numberOfTeams h5");
   numberOfTeams.innerText = number;
+  if (number != 1) {
+    animationTranslateYUp(numberOfTeams);
+  }
+
   return +number;
 }
 
@@ -17,7 +52,7 @@ const nameInput = document.getElementById("name");
 
 addBtn.addEventListener("click", addStudentToList);
 nameInput.addEventListener("keypress", function (e) {
-  if (e.key === "Enter" && nameInput.value != "") {
+  if (e.key === "Enter" && nameInput.value !== "") {
     addStudentToList();
   }
 });
@@ -25,12 +60,14 @@ nameInput.addEventListener("keypress", function (e) {
 function addStudentToList() {
   const studentList = document.getElementById("list-of-students");
   let classesToAdd = ["list-group-item", "rounded", "newStudent"];
-
-  const newStudent = document.createElement("li");
-  newStudent.classList.add(...classesToAdd);
-  newStudent.innerText = nameInput.value;
-  studentList.appendChild(newStudent);
-  nameInput.value = "";
+  if (nameInput.value !== "") {
+    const newStudent = document.createElement("li");
+    newStudent.classList.add(...classesToAdd);
+    newStudent.innerText = nameInput.value;
+    studentList.appendChild(newStudent);
+    animationTranslateXLeft(newStudent);
+    nameInput.value = "";
+  }
 }
 
 function generateTeamContainers() {
