@@ -130,7 +130,16 @@ function assignToteam() {
     deleteBtn.classList.add("delete-btn");
     deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
     deleteBtn.addEventListener("click", function () {
-      alert("item deleted");
+      this.parentNode.parentNode.removeChild(listItem);
+
+      // this needs refracturing and should be a function
+      let classesToAdd = ["list-group-item", "rounded", "newStudent"];
+      const newStudent = document.createElement("li");
+      newStudent.classList.add(...classesToAdd);
+      newStudent.innerText = randomStudent;
+      studentList.appendChild(newStudent);
+      studentArray.push(newStudent.innerText);
+      animationTranslateXLeft(newStudent);
     });
     //add class
     listItem.classList.add("list-group-item");
