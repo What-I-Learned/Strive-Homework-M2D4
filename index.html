@@ -67,7 +67,7 @@
           </form>
 
           <h4 class="text-center py-2">List of Students</h4>
-          <div class="input-group flex-nowrap">
+          <div class="input-group flex-nowrap align-items-center">
             <div
               id="carouselExampleSlidesOnly"
               class="p-1 input-group-prepend input-group-text carousel slide"
@@ -75,7 +75,7 @@
               id="addon-wrapping"
               style="display: inline-block; width: 3rem"
             >
-              <div class="carousel-inner">
+              <div class="carousel-inner mt-1">
                 <div class="carousel-item active" data-interval="800">
                   <i style="font-size: 1.5rem" class="p-0 fas fa-biking"></i>
                 </div>
@@ -104,7 +104,7 @@
             <button
               id="randomlySelectAndAssign"
               type="button"
-              class="btn btn-secondary btn-md"
+              class="btn btn-secondary btn-md mt-2"
             >
               Randomly Assign
             </button>
@@ -116,7 +116,12 @@
             <div class="col-xl-3 col-md-4 col-sm-6 team-card">
               <div class="card shadow-sm" style="width: 18rem">
                 <div class="card-header">Team 1</div>
-                <ul class="list-group list-group-flush"></ul>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    List item
+                    <span class="delete-btn"><i class="fas fa-trash"></i></span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

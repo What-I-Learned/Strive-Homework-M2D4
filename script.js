@@ -1,5 +1,6 @@
 window.onload = function () {
   displayandGetAmount();
+  generateTeamContainers();
 };
 
 // some animation for team amount element
@@ -125,25 +126,25 @@ function assignToteam() {
     console.log(list);
     // create containers
     let listItem = document.createElement("li");
+    let deleteBtn = document.createElement("span");
+    deleteBtn.classList.add("delete-btn");
+    deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
+    deleteBtn.addEventListener("click", function () {
+      alert("item deleted");
+    });
     //add class
     listItem.classList.add("list-group-item");
     listItem.innerText = randomStudent;
+    // add delete button on hover to the list item
     // remove element
     let studentToRemove = document.querySelectorAll(".newStudent")[randomIndex];
     studentList.removeChild(studentToRemove);
     // append
     list.appendChild(listItem);
-    //create delete button
-    //add class to delete button
-    // listItem.innerText =
+    listItem.appendChild(deleteBtn);
   } else {
     alert("Empty list");
   }
-
-  // splice (index,1)
-  // remove from the "waiting list"
-  // add to math.random * array of teams and to the element?
-  // add delete button on hover to the list item
 }
 
 // just additional function that doesn't work
